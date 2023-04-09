@@ -1,17 +1,3 @@
-# xirr_flutter
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
-
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages).
-
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages).
--->
-
 A Flutter library to calculate Internal Rate Of Return(XIRR) for financial investments.
 
 ## Features
@@ -38,9 +24,7 @@ positive amount.
 
 List<Transaction> transactions = [];
 
-transactions.add
-(
-Transaction.withStringDate(-1000, "2010-01-01"));
+transactions.add(Transaction.withStringDate(-1000, "2010-01-01"));
 transactions.add(Transaction.withStringDate(1100, "2011-01-01"));
 
 final double? result =
