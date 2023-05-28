@@ -6,9 +6,10 @@ import 'calculation.dart';
 /// inverses of a function.
 /// <p>
 /// The function and its derivative must be supplied as instances of
+
 /// Function and the answers are computed as doubles.
 /// <p>
-/// For examples of usage, see the source of the test class or the Xirr class.
+/// For examples of usage, see the source of the test class or the Xirr_Flutter class.
 /// <p>
 /// The <code>iterations</code> parameter is used as an upper bound on the number
 /// of iterations to run the method for.
@@ -64,11 +65,9 @@ class NewtonRaphson {
   /// @param guess value to start the algorithm with
   /// @return the inverse of the function at <code>target</code> within the
   /// given tolerance
-  /// @throws ZeroValuedDerivativeException if the derivative is 0 while
-  ///                                       executing the Newton-Raphson method
-  /// @throws OverflowException when a value involved is infinite or NaN
-  /// @throws NonconvergenceException if the method fails to converge in the
-  ///                                 given number of iterations
+  /// @throws Exception if the derivative is 0 while executing the Newton-Raphson method
+  /// @throws Exception when a value involved is infinite or NaN
+  /// @throws Exception if the method fails to converge in the given number of iterations
   double? inverse(final double target, final double guess) {
     return Calculation(func, derivative, iterations, tolerance)
         .solve(guess, target);

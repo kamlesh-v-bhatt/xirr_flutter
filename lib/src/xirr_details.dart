@@ -4,7 +4,7 @@ import '../transaction.dart';
 import 'exceptions.dart';
 
 /// Converts a stream of {@link Transaction} instances into the data needed for
-/// the {@link Xirr} algorithm.
+/// the {@link Xirr_Flutter} algorithm.
 class XirrDetails {
   DateTime? start;
   DateTime? end;

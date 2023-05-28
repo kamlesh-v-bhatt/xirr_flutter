@@ -1,3 +1,5 @@
+library xirr_flutter;
+
 import 'dart:core';
 
 /// Represents a transaction for the purposes of computing the irregular rate

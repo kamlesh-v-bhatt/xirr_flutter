@@ -11,36 +11,24 @@ import 'transaction.dart';
 /// had been applied to an investment with that rate, the same resulting returns
 /// would be realized.
 /// <p>
-/// When creating the list of {@link Transaction} instances to feed Xirr, be
+/// When creating the list of {@link Transaction} instances to feed Xirr_Flutter, be
 /// sure to include one transaction representing the present value of the account
 /// now, as if you had cashed out the investment.
 /// <p>
 /// Example usage:
 /// <code>
-///     double rate = new XirrFlutter(
-///             new Transaction(-1000, "2016-01-15"),
-///             new Transaction(-2500, "2016-02-08"),
-///             new Transaction(-1000, "2016-04-17"),
-///             new Transaction( 5050, "2016-08-24")
-///         ).xirr();
+///     List<Transaction> transactions = [];
+///
+///     transactions.add(Transaction.withStringDate(-1000, "2016-01-15"));
+///     transactions.add(Transaction.withStringDate(-2500, "2016-02-08"));
+///     transactions.add(Transaction.withStringDate(-1000, "2016-04-17"));
+///     transactions.add(Transaction.withStringDate(5050, "2016-08-24"));
+///
+///     final double? result =
+///     XirrFlutter.withTransactions(transactions).calculate();
+///     expect(result?.toPrecision(11), 0.25042347105);
 /// </code>
-/// <p>
-/// Example using the builder to gain more control:
-/// <code>
-///     double rate = XirrFlutter.builder()
-///         .withNewtonRaphsonBuilder(
-///             NewtonRaphson.builder()
-///                 .withIterations(1000)
-///                 .withTolerance(0.0001))
-///         .withGuess(.20)
-///         .withTransactions(
-///             new Transaction(-1000, "2016-01-15"),
-///             new Transaction(-2500, "2016-02-08"),
-///             new Transaction(-1000, "2016-04-17"),
-///             new Transaction( 5050, "2016-08-24")
-///         ).xirr();
-/// </code>
-/// <p>
+
 class XirrFlutter {
   static const double daysInYear = 365;
   late final NewtonRaphson newtonRaphson;
@@ -82,6 +70,7 @@ class XirrFlutter {
     // It is much easier to calculate the present value of an Investment
     final Investment result = Investment();
     result.amount = tx.amount;
+    // Don't use YEARS.between() as it returns whole numbers
     result.years = daysBetween(tx.when, details.end!) / daysInYear;
     return result;
   }
@@ -107,8 +96,8 @@ class XirrFlutter {
   /// Calculates the irregular rate of return of the transactions for this
   /// instance of Xirr.
   /// @return the irregular rate of return of the transactions
-  /// @throws ZeroValuedDerivativeException if the derivative is 0 while executing the Newton-Raphson method
-  /// @throws NonconvergenceException if the Newton-Raphson method fails to converge in the
+  /// @throws Exception if the derivative is 0 while executing the Newton-Raphson method
+  /// @throws Exception if the Newton-Raphson method fails to converge in the
   double? calculate() {
     final double years = daysBetween(details.start!, details.end!) / daysInYear;
     if (details.maxAmount == 0) {

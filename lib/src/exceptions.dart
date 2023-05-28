@@ -27,7 +27,7 @@ class OverflowException implements Exception {
 
   @override
   toString() {
-    return super.toString() + ": " + _state.toString();
+    return "${super.toString()}: $_state";
   }
 }
 
