@@ -1,6 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:xirr_flutter/src/exceptions.dart';
-import 'package:xirr_flutter/transaction.dart';
 import 'package:xirr_flutter/xirr_flutter.dart';
 
 void main() {

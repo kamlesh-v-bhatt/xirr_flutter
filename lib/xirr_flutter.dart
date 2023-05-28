@@ -1,5 +1,7 @@
 library xirr_flutter;
 
+export 'transaction.dart';
+
 import 'src/exceptions.dart';
 import 'src/investment.dart';
 import 'src/newton_raphson.dart';

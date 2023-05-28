@@ -10,3 +10,7 @@
 ## 1.0.2
 
 * Minor changes to the project and few bug fixes
+
+## 1.0.3
+
+* Minor changes to the project and few bug fixes
